@@ -6,7 +6,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'pytest -m tests/test_sample.py'
+                sh 'python3.10 -m pytest tests/test_sample.py'
             }
         }
 
