@@ -9,7 +9,8 @@ pipeline {
                 sh '''
                 python3 -m venv venv
                 source venv/bin/activate
-                pip ins --version
+                pip install pytest
+                pytest --version
                # pytest tests/test_sample.py
                 '''
             }
