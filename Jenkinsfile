@@ -11,20 +11,21 @@ pipeline {
                 . venv/bin/activate
                 pip install pytest
                 pytest --version
-               # pytest tests/test_sample.py
+                pytest tests/test_sample.py
+                pytest --junitxml=test-results/results.xml
                 '''
             }
         }
 
-        stage('Upload Results to Xray') {
-            steps {
-                sh '''
-                    curl -u "${JIRA_USER}:{$JIRA_PASSWORD}" \
-                         -F "file=@test-results/results.xml" \
-                         "{$JIRA_BASE_URL}/rest/raven/1.0/import/execution/junit?projectKey={$JIRA_PROJECT_KEY}"
-                '''
-            }
-        }
+        // stage('Upload Results to Xray') {
+        //     steps {
+        //         sh '''
+        //             curl -u "${JIRA_USER}:{$JIRA_PASSWORD}" \
+        //                  -F "file=@test-results/results.xml" \
+        //                  "{$JIRA_BASE_URL}/rest/raven/1.0/import/execution/junit?projectKey={$JIRA_PROJECT_KEY}"
+        //         '''
+        //     }
+        // }
     }
 
     post {
