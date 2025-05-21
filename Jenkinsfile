@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh '''
                 
-                python -m pytest tests/test_sample.py
+                /usr/bin/python3.12 -m pytest tests/test_sample.py
                 '''
             }
         }
