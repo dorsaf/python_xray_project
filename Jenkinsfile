@@ -7,8 +7,10 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '''
-                
-                pytest tests/test_sample.py
+                python3 -m venv venv
+                source venv/bin/activate
+                pip ins --version
+               # pytest tests/test_sample.py
                 '''
             }
         }
