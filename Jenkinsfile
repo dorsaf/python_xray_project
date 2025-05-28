@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                     curl -u "${JIRA_USER}:{$JIRA_PASSWORD}" \
                          -F "file=@test-results/results.xml" \
-                         "{$JIRA_BASE_URL}/rest/raven/1.0/import/execution/junit?projectKey={$JIRA_PROJECT_KEY}"
+                         "${JIRA_BASE_URL}/rest/raven/1.0/import/execution/junit?projectKey={$JIRA_PROJECT_KEY}"
                 '''
             }
         }
